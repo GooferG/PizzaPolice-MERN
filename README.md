@@ -1,8 +1,8 @@
 Getting Started:
 
-*npm i -y
-*nodemon server.js
-*npm run dev
+npm i -y
+npm run dev
+nodemon server
 
 --
 **
