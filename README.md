@@ -1,3 +1,15 @@
+Getting Started:
+
+npm i -y
+
+nodemon server.js
+npm run dev
+
+**
+Add .env file with DB config and PORT info:
+MONG_URI=
+PORT=
+
 - API Endpoints (for Owner)
 
 GET /toppings --> Gets all the toppings documents
