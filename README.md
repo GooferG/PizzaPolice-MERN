@@ -5,7 +5,6 @@ npm run dev
 nodemon server
 ---
 ---
-**
 Add .env file with DB config and PORT info:
 -
 MONG_URI=
