@@ -23,7 +23,7 @@ GET /toppings/:id --> Gets a single toppings document
 
 DELETE /toppings/:id --> Deletes a single topping
 
-PATCH /pizzas/:id --> Updates a single toppping
+PATCH /toppings/:id --> Updates a single toppping
 
 ---
 
