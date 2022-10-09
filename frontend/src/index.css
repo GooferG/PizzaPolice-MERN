@@ -3,8 +3,8 @@
 
 /* layout */
 :root {
-  --primary: #1aac83;
-  --error: #e7195a;
+  --primary: #147d18;
+  --error: #ff4000;
 }
 body {
   background: #f1f1f1;
@@ -107,4 +107,34 @@ input.error {
 
 .deleteAndEditbutton {
   display: flex;
+}
+
+.trashcan {
+  color: red !important;
+}
+.trashcan:hover {
+  color: rgb(215, 21, 21) !important;
+}
+.edit-icon:hover {
+  color: rgb(86, 86, 15) !important;
+}
+
+.ingredients span {
+  color: green;
+  padding: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.ingredients .btn {
+  cursor: pointer;
+  background-color: green;
+  border-radius: 4px;
+  color: white;
+  margin-left: 5px;
+  padding: 0 10px;
+}
+
+.btn:hover {
+  font-size: 15px;
 }

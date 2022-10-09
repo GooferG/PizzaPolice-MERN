@@ -5,8 +5,9 @@ import { useToppingsContext } from '../hooks/useToppingsContext';
 import ToppingDetails from '../components/ToppingDetails';
 import ToppingForm from '../components/ToppingForm';
 import ToppingEdit from '../components/ToppingEdit';
+import PizzaMaker from '../components/PizzaMaker';
 
-const Home = () => {
+const Home = ({ isAdmin }) => {
   const { toppings, dispatch } = useToppingsContext();
   const [showEdit, setShowEdit] = useState(false);
   const [title, setTitle] = useState('');
@@ -32,30 +33,39 @@ const Home = () => {
     };
 
     fetchToppings();
-  }, [dispatch]);
+  }, [toppings, dispatch]);
 
   return (
     <div className="home">
-      {showEdit ? (
-        <ToppingEdit
-          handleBackButton={setShowEdit}
-          topping={title}
-          qty={quantity}
-        />
-      ) : (
+      {isAdmin && (
         <>
-          <div classNme="toppings">
-            {toppings &&
-              toppings.map((topping) => (
-                <ToppingDetails
-                  key={topping._id}
-                  topping={topping}
-                  handleEdit={handleShowEdit}
-                />
-              ))}
-          </div>
-          <ToppingForm />
+          {showEdit ? (
+            <ToppingEdit
+              handleBackButton={setShowEdit}
+              topping={title}
+              qty={quantity}
+            />
+          ) : (
+            <>
+              <div classNme="toppings">
+                {toppings &&
+                  toppings.map((topping) => (
+                    <ToppingDetails
+                      key={topping._id}
+                      topping={topping}
+                      handleEdit={handleShowEdit}
+                    />
+                  ))}
+              </div>
+              <ToppingForm />
+            </>
+          )}
         </>
+      )}
+      {!isAdmin && (
+        <div>
+          <PizzaMaker toppings={toppings} />
+        </div>
       )}
     </div>
   );

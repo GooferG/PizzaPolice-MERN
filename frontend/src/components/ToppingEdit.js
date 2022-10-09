@@ -1,15 +1,16 @@
 import { useState } from 'react';
 import { useToppingsContext } from '../hooks/useToppingsContext';
 
-const ToppingEdit = ({ handleBackButton, topping, qty }) => {
+const ToppingEdit = ({ handleBackButton, topping }) => {
   const { dispatch } = useToppingsContext();
-  const [title, setTitle] = useState(topping);
-  const [quantity, setQuantity] = useState(qty);
+  const [title, setTitle] = useState(topping.title);
+  const [quantity, setQuantity] = useState(topping.quantity);
   const [error, setError] = useState(null);
   const [emptyFields, setEmptyFields] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(e.target.id);
 
     const toppingObj = {
       title,
@@ -31,12 +32,14 @@ const ToppingEdit = ({ handleBackButton, topping, qty }) => {
     }
 
     if (response.ok) {
-      setTitle('');
-      setQuantity('');
+      setTitle(title);
+      setQuantity(quantity);
       setError(null);
       setEmptyFields([]);
       console.log('new edited topping', json);
       dispatch({ type: 'UPDATE_TOPPING', payload: json });
+      // window.location.reload();
+      handleBackButton(false);
     }
   };
 
@@ -51,7 +54,8 @@ const ToppingEdit = ({ handleBackButton, topping, qty }) => {
         </span>
       </p>
       <div className="topping-details">
-        <form className="create" onSubmit={handleSubmit}>
+        <form className="create" onSubmit={handleSubmit} method="POST">
+          {/* <input type="hidden" name="_method" value="PUT" /> */}
           <h3>Edit Topping</h3>
           <label>Topping Name:</label>
           <input

@@ -12,6 +12,7 @@ const pizzaSchema = new Schema(
       type: Number,
       required: true,
     },
+    ingredients: [String],
   },
   {
     timestamps: true,

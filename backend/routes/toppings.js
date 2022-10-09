@@ -22,6 +22,6 @@ router.post('/', createTopping);
 router.delete('/:id', deleteTopping);
 
 // UPDATE a topping
-router.patch('/:id', updateTopping);
+router.put('/:id', updateTopping);
 
 module.exports = router;

@@ -31,7 +31,7 @@ const ToppingDetails = ({ topping, handleEdit }) => {
         delete
       </span>
       <span
-        onClick={() => handleEdit(true, topping.title, topping.quantity)}
+        onClick={() => handleEdit(true, topping)}
         className="material-symbols-outlined edit-icon"
       >
         edit

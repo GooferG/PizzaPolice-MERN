@@ -16,8 +16,9 @@ export const ToppingsReducer = (state, action) => {
         toppings: state.toppings.filter((t) => t._id !== action.payload._id),
       };
     case 'UPDATE_TOPPING':
+      console.log([action.payload, ...state.toppings]);
       return {
-        toppings: { toppings: action.payload },
+        toppings: [...state.toppings],
       };
     default:
       return state;

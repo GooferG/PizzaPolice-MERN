@@ -72,6 +72,7 @@ const deleteTopping = async (req, res) => {
 // UPDATE a topping
 const updateTopping = async (req, res) => {
   const { id } = req.params;
+  console.log(id);
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({ error: 'No such topping' });
@@ -80,7 +81,8 @@ const updateTopping = async (req, res) => {
   const topping = await Topping.findOneAndUpdate(
     { _id: id },
     {
-      ...req.body,
+      title: req.body.title,
+      quantity: req.body.quantity,
     }
   );
   if (!topping) {
