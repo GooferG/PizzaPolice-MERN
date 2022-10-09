@@ -1,3 +1,18 @@
+Getting Started:
+---
+npm i -y
+npm run dev
+nodemon server
+---
+---
+Add .env file with DB config and PORT info:
+-
+MONG_URI=
+-
+PORT=
+**
+----
+
 - API Endpoints (for Owner)
 
 GET /toppings --> Gets all the toppings documents
@@ -8,7 +23,7 @@ GET /toppings/:id --> Gets a single toppings document
 
 DELETE /toppings/:id --> Deletes a single topping
 
-PATCH /pizzas/:id --> Updates a single toppping
+PATCH /toppings/:id --> Updates a single toppping
 
 ---
 
