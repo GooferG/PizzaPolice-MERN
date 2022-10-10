@@ -3,11 +3,12 @@ import { usePizzasContext } from '../hooks/usePizzasContext';
 // date-fns
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 
-const PizzaDetails = ({ pizzas, handleEdit }) => {
+const PizzaDetails = ({ name, _id, createdAt, handleEdit, pizza }) => {
   const { dispatch } = usePizzasContext();
+  console.log();
 
   const handleDeleteClick = async () => {
-    const response = await fetch(`/api/pizzas/${pizzas._id}`, {
+    const response = await fetch(`/api/pizzas/${_id}`, {
       method: 'DELETE',
     });
     const json = await response.json();
@@ -18,20 +19,20 @@ const PizzaDetails = ({ pizzas, handleEdit }) => {
   };
   return (
     <div className="topping-details">
-      <h4>{pizzas.name}</h4>
+      <h4>{name}</h4>
       <p>
         <strong>Toppings: </strong>
-        Ingredients
+        {pizza.ingredients.join(', ')}
       </p>
       <p>
         <strong>Added: </strong>{' '}
-        {formatDistanceToNow(new Date(pizzas.createdAt), { addSuffix: true })}
+        {formatDistanceToNow(new Date(createdAt), { addSuffix: true })}
       </p>
       <span onClick={handleDeleteClick} className="material-symbols-outlined">
         delete
       </span>
       <span
-        onClick={() => handleEdit(true, pizzas)}
+        onClick={() => handleEdit(true, pizza)}
         className="material-symbols-outlined edit-icon"
       >
         edit

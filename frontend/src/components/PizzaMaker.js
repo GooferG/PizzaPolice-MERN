@@ -16,6 +16,7 @@ const PizzaMaker = ({ toppings, pizzas }) => {
       size,
       ingredients: ingredients,
     };
+
     console.log(pizza);
     const response = await fetch('/api/pizzas', {
       method: 'POST',
@@ -42,6 +43,10 @@ const PizzaMaker = ({ toppings, pizzas }) => {
     }
   };
 
+  const handleAddIngr = (v) => {
+    setIngredients([...ingredients, v]);
+  };
+
   return (
     <div className="container">
       <h1>Make your Master Pizza here! 👩‍🍳</h1>
@@ -51,7 +56,7 @@ const PizzaMaker = ({ toppings, pizzas }) => {
           <div key={i}>
             <span>{v.title}</span>
             <span>Available: {v.quantity}</span>
-            <span className="btn" onClick={(e) => setIngredients(v.title)}>
+            <span className="btn" onClick={(e) => handleAddIngr(v.title)}>
               +
             </span>
             <span className="btn" onClick={(e) => setIngredients('')}>
@@ -86,7 +91,7 @@ const PizzaMaker = ({ toppings, pizzas }) => {
         {error && <div className="error">{error}</div>}
       </form>
       <div>
-        <PizzaDisplay pizzas={pizzas} toppings={toppings} />
+        <PizzaDisplay toppings={toppings} />
       </div>
     </div>
   );

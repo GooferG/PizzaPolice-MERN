@@ -1,19 +1,19 @@
-import { useEffect, useState } from 'react';
-import { useToppingsContext } from '../hooks/useToppingsContext';
-import { usePizzasContext } from '../hooks/usePizzasContext';
+import { useEffect, useState } from "react";
+import { useToppingsContext } from "../hooks/useToppingsContext";
+import { usePizzasContext } from "../hooks/usePizzasContext";
 
 // components
-import ToppingDetails from '../components/ToppingDetails';
-import ToppingForm from '../components/ToppingForm';
-import ToppingEdit from '../components/ToppingEdit';
-import PizzaMaker from '../components/PizzaMaker';
+import ToppingDetails from "../components/ToppingDetails";
+import ToppingForm from "../components/ToppingForm";
+import ToppingEdit from "../components/ToppingEdit";
+import PizzaMaker from "../components/PizzaMaker";
 
 const Home = ({ isAdmin }) => {
   const { toppings, dispatch } = useToppingsContext();
   const { pizzas, pizzasdispatch } = usePizzasContext();
   const [showEdit, setShowEdit] = useState(false);
-  const [title, setTitle] = useState('');
-  const [quantity, setQuantity] = useState('');
+  const [title, setTitle] = useState("");
+  const [quantity, setQuantity] = useState("");
 
   const handleShowEdit = (isEdit, topping, qty) => {
     setShowEdit(isEdit);
@@ -23,19 +23,19 @@ const Home = ({ isAdmin }) => {
 
   useEffect(() => {
     const fetchToppings = async () => {
-      const response = await fetch('/api/toppings');
+      const response = await fetch("/api/toppings");
       const json = await response.json();
 
       if (response.ok) {
         dispatch({
-          type: 'SET_TOPPINGS',
+          type: "SET_TOPPINGS",
           payload: json,
         });
       }
     };
 
     fetchToppings();
-  }, [toppings, dispatch]);
+  }, []);
 
   return (
     <div className="home">
