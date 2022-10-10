@@ -26,7 +26,9 @@ export const PizzasReducer = (state, action) => {
 };
 
 export const PizzaContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(PizzasReducer, { pizzas: null });
+  const [state, dispatch] = useReducer(PizzasReducer, {
+    pizzas: null,
+  });
 
   return (
     <PizzaContext.Provider value={{ ...state, dispatch }}>

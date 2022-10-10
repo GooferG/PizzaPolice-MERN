@@ -3,12 +3,15 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { ToppingContextProvider } from './context/ToppingContext';
+import { PizzaContextProvider } from './context/PizzaContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ToppingContextProvider>
-      <App />
-    </ToppingContextProvider>
+    <PizzaContextProvider>
+      <ToppingContextProvider>
+        <App />
+      </ToppingContextProvider>
+    </PizzaContextProvider>
   </React.StrictMode>
 );

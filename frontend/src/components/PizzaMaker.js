@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PizzaDisplay from './PizzaDisplay';
 
-const PizzaMaker = ({ toppings }) => {
+const PizzaMaker = ({ toppings, pizzas }) => {
   const [pizzaName, setPizzaName] = useState('');
   const [size, setSize] = useState('');
   const [ingredients, setIngredients] = useState([]);
@@ -86,7 +86,7 @@ const PizzaMaker = ({ toppings }) => {
         {error && <div className="error">{error}</div>}
       </form>
       <div>
-        <PizzaDisplay pizzas={pizzaName} size={size} />
+        <PizzaDisplay pizzas={pizzas} toppings={toppings} />
       </div>
     </div>
   );

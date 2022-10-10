@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useToppingsContext } from '../hooks/useToppingsContext';
-// import { usePizzasContext } from '../hooks/usePizzasContext';
+import { usePizzasContext } from '../hooks/usePizzasContext';
 
 // components
 import ToppingDetails from '../components/ToppingDetails';
@@ -10,7 +10,7 @@ import PizzaMaker from '../components/PizzaMaker';
 
 const Home = ({ isAdmin }) => {
   const { toppings, dispatch } = useToppingsContext();
-  // const { pizzas, dispatch } = usePizzasContext();
+  const { pizzas, pizzasdispatch } = usePizzasContext();
   const [showEdit, setShowEdit] = useState(false);
   const [title, setTitle] = useState('');
   const [quantity, setQuantity] = useState('');
@@ -66,7 +66,7 @@ const Home = ({ isAdmin }) => {
       )}
       {!isAdmin && (
         <div>
-          <PizzaMaker toppings={toppings} />
+          <PizzaMaker toppings={toppings} pizzas={pizzas} />
         </div>
       )}
     </div>
