@@ -40,6 +40,13 @@ const createTopping = async (req, res) => {
       .json({ error: 'Please fill in all the fields', emptyFields });
   }
 
+  const toppingTaken = await Topping.findOne({ title: title });
+  console.log(toppingTaken);
+
+  if (toppingTaken) {
+    return res.status(400).json({ error: 'Cannot have duplicate ingredients' });
+  }
+
   // Add doc to DB
   try {
     const topping = await Topping.create({

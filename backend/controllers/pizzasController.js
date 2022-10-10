@@ -43,6 +43,13 @@ const createPizza = async (req, res) => {
       .json({ error: 'Please fill in all the fields', emptyFields });
   }
 
+  const pizzaNameTaken = await Pizza.findOne({ name: name });
+  console.log(pizzaNameTaken);
+
+  if (pizzaNameTaken) {
+    return res.status(400).json({ error: 'Cannot have duplicate pizzas' });
+  }
+
   // Add doc to DB
   try {
     const pizza = await Pizza.create({

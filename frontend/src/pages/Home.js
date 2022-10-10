@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useToppingsContext } from '../hooks/useToppingsContext';
+// import { usePizzasContext } from '../hooks/usePizzasContext';
 
 // components
 import ToppingDetails from '../components/ToppingDetails';
@@ -9,6 +10,7 @@ import PizzaMaker from '../components/PizzaMaker';
 
 const Home = ({ isAdmin }) => {
   const { toppings, dispatch } = useToppingsContext();
+  // const { pizzas, dispatch } = usePizzasContext();
   const [showEdit, setShowEdit] = useState(false);
   const [title, setTitle] = useState('');
   const [quantity, setQuantity] = useState('');
@@ -47,7 +49,7 @@ const Home = ({ isAdmin }) => {
             />
           ) : (
             <>
-              <div classNme="toppings">
+              <div className="toppings">
                 {toppings &&
                   toppings.map((topping) => (
                     <ToppingDetails

@@ -20,6 +20,7 @@ export const ToppingsReducer = (state, action) => {
       return {
         toppings: [...state.toppings],
       };
+
     default:
       return state;
   }

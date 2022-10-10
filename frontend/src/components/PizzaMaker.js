@@ -66,21 +66,21 @@ const PizzaMaker = ({ toppings }) => {
           type="text"
           onChange={(e) => setPizzaName(e.target.value)}
           value={pizzaName}
-          className={emptyFields.includes('pizzaName') ? 'error' : ''}
+          // className={emptyFields.includes('pizzaName') ? 'error' : ''}
         />
         <label>Size (in inches): </label>
         <input
           type="number"
           onChange={(e) => setSize(e.target.value)}
           value={size}
-          className={emptyFields.includes('size') ? 'error' : ''}
+          // className={emptyFields.includes('size') ? 'error' : ''}
         />
         <label>Ingredients:</label>
         <input
           type="text"
           onChange={(e) => setIngredients(e.target.value)}
           value={ingredients}
-          className={emptyFields.includes('ingredients') ? 'error' : ''}
+          // className={emptyFields.includes('ingredients') ? 'error' : ''}
         />
         <button>Add Pizza</button>
         {error && <div className="error">{error}</div>}
