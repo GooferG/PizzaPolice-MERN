@@ -25,14 +25,17 @@ const getPizza = async (req, res) => {
 
 // CREATE new pizza
 const createPizza = async (req, res) => {
-  const { name, size } = req.body;
+  const { name, size, ingredients } = req.body;
 
   let emptyFields = [];
-  if (!title) {
-    emptyFields.push('title');
+  if (!name) {
+    emptyFields.push('pizzaName');
   }
-  if (!quantity) {
-    emptyFields.push('quantity');
+  if (!size) {
+    emptyFields.push('size');
+  }
+  if (!ingredients) {
+    emptyFields.push('ingredients');
   }
   if (emptyFields.length > 0) {
     return res
@@ -45,6 +48,7 @@ const createPizza = async (req, res) => {
     const pizza = await Pizza.create({
       name,
       size,
+      ingredients,
     });
     res.status(200).json(pizza);
   } catch (err) {

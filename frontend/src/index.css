@@ -138,3 +138,12 @@ input.error {
 .btn:hover {
   font-size: 15px;
 }
+
+.btn {
+  cursor: pointer;
+  background-color: grey;
+  border-radius: 4px;
+  color: white;
+  margin-left: 5px;
+  padding: 0 10px;
+}

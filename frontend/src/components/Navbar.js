@@ -7,8 +7,12 @@ const Navbar = ({ setIsAdmin }) => {
         <Link to={'/'}>
           <h1>🍕 PizzaPolice 🍕</h1>
           <span>
-            <button onClick={() => setIsAdmin(true)}>Admin</button>
-            <button onClick={() => setIsAdmin(false)}>Chef</button>
+            <button className="btn" onClick={() => setIsAdmin(true)}>
+              Admin
+            </button>
+            <button className="btn" onClick={() => setIsAdmin(false)}>
+              Chef
+            </button>
           </span>
         </Link>
       </div>
