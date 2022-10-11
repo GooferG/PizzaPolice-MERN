@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { usePizzasContext } from '../hooks/usePizzasContext';
 import PizzaDetails from './PizzaDetails';
 
-function PizzaDisplay({ handleEdit }) {
+function PizzaDisplay() {
   const { pizzas, dispatch } = usePizzasContext();
 
   useEffect(() => {
@@ -18,7 +18,7 @@ function PizzaDisplay({ handleEdit }) {
       }
     };
     fetchPizzas();
-  }, []);
+  });
 
   return (
     <div>
@@ -32,7 +32,6 @@ function PizzaDisplay({ handleEdit }) {
               _id={pizza._id}
               createdAt={pizza.createdAt}
               pizza={pizza}
-              handleEdit={handleEdit}
             />
           ))}
       </div>

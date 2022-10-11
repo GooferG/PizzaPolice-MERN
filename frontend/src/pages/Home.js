@@ -10,7 +10,7 @@ import PizzaMaker from '../components/PizzaMaker';
 
 const Home = ({ isAdmin }) => {
   const { toppings, dispatch } = useToppingsContext();
-  const { pizzas, pizzasdispatch } = usePizzasContext();
+  const { pizzas, pizzasDispatch } = usePizzasContext();
   const [showEdit, setShowEdit] = useState(false);
   const [title, setTitle] = useState('');
   const [quantity, setQuantity] = useState('');
@@ -35,7 +35,7 @@ const Home = ({ isAdmin }) => {
     };
 
     fetchToppings();
-  }, []);
+  });
 
   return (
     <div className="home">

@@ -92,8 +92,9 @@ const updatePizza = async (req, res) => {
   const pizza = await Pizza.findOneAndUpdate(
     { _id: id },
     {
-      title: req.body.title,
-      quantity: req.body.quantity,
+      name: req.body.name,
+      size: req.body.size,
+      ingredients: req.body.ingredients,
     }
   );
   if (!pizza) {

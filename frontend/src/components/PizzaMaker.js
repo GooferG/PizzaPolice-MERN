@@ -2,14 +2,22 @@ import { useState } from 'react';
 import PizzaDisplay from './PizzaDisplay';
 import { usePizzasContext } from '../hooks/usePizzasContext';
 
-const PizzaMaker = ({ toppings, pizzas, handleEdit }) => {
-  const { dispatch } = usePizzasContext();
+const PizzaMaker = ({ toppings }) => {
+  const { pizzas, dispatch } = usePizzasContext();
 
+  const [showEdit, setShowEdit] = useState(false);
   const [pizzaName, setPizzaName] = useState('');
   const [size, setSize] = useState('');
   const [ingredients, setIngredients] = useState([]);
   const [error, setError] = useState(null);
   const [emptyFields, setEmptyFields] = useState([]);
+
+  const handleShowEdit = (isEdit, pizzaName) => {
+    setShowEdit(isEdit);
+    setPizzaName(pizzaName.name);
+    setSize(pizzaName.size);
+    setIngredients(pizzaName.ingredients);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -94,7 +102,7 @@ const PizzaMaker = ({ toppings, pizzas, handleEdit }) => {
         {error && <div className="error">{error}</div>}
       </form>
       <div>
-        <PizzaDisplay toppings={toppings} handleEdit={handleEdit} />
+        <PizzaDisplay toppings={toppings} handleEdit={handleShowEdit} />
       </div>
     </div>
   );
