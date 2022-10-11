@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import PizzaDisplay from './PizzaDisplay';
+import { usePizzasContext } from '../hooks/usePizzasContext';
 
-const PizzaMaker = ({ toppings, pizzas }) => {
+const PizzaMaker = ({ toppings, pizzas, handleEdit }) => {
+  const { dispatch } = usePizzasContext();
+
   const [pizzaName, setPizzaName] = useState('');
   const [size, setSize] = useState('');
   const [ingredients, setIngredients] = useState([]);
@@ -39,7 +42,7 @@ const PizzaMaker = ({ toppings, pizzas }) => {
       setError(null);
       setEmptyFields([]);
       console.log('new pizza added', json);
-      // dispatch({ type: 'CREATE_TOPPING', payload: json });
+      dispatch({ type: 'CREATE_PIZZA', payload: json });
     }
   };
 
@@ -71,27 +74,27 @@ const PizzaMaker = ({ toppings, pizzas }) => {
           type="text"
           onChange={(e) => setPizzaName(e.target.value)}
           value={pizzaName}
-          // className={emptyFields.includes('pizzaName') ? 'error' : ''}
+          className={emptyFields.includes('pizzaName') ? 'error' : ''}
         />
         <label>Size (in inches): </label>
         <input
           type="number"
           onChange={(e) => setSize(e.target.value)}
           value={size}
-          // className={emptyFields.includes('size') ? 'error' : ''}
+          className={emptyFields.includes('size') ? 'error' : ''}
         />
         <label>Ingredients:</label>
         <input
           type="text"
           onChange={(e) => setIngredients(e.target.value)}
           value={ingredients}
-          // className={emptyFields.includes('ingredients') ? 'error' : ''}
+          className={emptyFields.includes('ingredients') ? 'error' : ''}
         />
         <button>Add Pizza</button>
         {error && <div className="error">{error}</div>}
       </form>
       <div>
-        <PizzaDisplay toppings={toppings} />
+        <PizzaDisplay toppings={toppings} handleEdit={handleEdit} />
       </div>
     </div>
   );

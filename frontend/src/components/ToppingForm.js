@@ -48,7 +48,7 @@ const ToppingForm = () => {
         type="text"
         onChange={(e) => setTitle(e.target.value)}
         value={title}
-        // className={emptyFields.includes('title') ? 'error' : ''}
+        className={emptyFields.includes('title') ? 'error' : ''}
       />
 
       <label>Quantity (in units):</label>
@@ -56,7 +56,7 @@ const ToppingForm = () => {
         type="number"
         onChange={(e) => setQuantity(e.target.value)}
         value={quantity}
-        // className={emptyFields.includes('quantity') ? 'error' : ''}
+        className={emptyFields.includes('quantity') ? 'error' : ''}
       />
       <button>Add Topping</button>
       {error && <div className="error">{error}</div>}
