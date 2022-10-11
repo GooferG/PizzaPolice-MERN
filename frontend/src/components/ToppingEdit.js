@@ -17,13 +17,16 @@ const ToppingEdit = ({ handleBackButton, topping }) => {
       quantity,
     };
 
-    const response = await fetch(`/api/toppings/${topping._id}`, {
-      method: 'PUT',
-      body: JSON.stringify(toppingObj),
-      headers: {
-        'Content-type': 'application/json',
-      },
-    });
+    const response = await fetch(
+      `https://pizza-police.herokuapp.com/api/toppings/${topping._id}`,
+      {
+        method: 'PUT',
+        body: JSON.stringify(toppingObj),
+        headers: {
+          'Content-type': 'application/json',
+        },
+      }
+    );
     const json = await response.json();
 
     if (!response.ok) {

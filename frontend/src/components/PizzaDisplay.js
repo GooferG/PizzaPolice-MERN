@@ -7,7 +7,9 @@ function PizzaDisplay() {
 
   useEffect(() => {
     const fetchPizzas = async () => {
-      const response = await fetch('/api/pizzas');
+      const response = await fetch(
+        'https://pizza-police.herokuapp.com/api/pizzas'
+      );
       const json = await response.json();
 
       if (response.ok) {

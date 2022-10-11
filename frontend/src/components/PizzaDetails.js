@@ -8,9 +8,12 @@ const PizzaDetails = ({ name, _id, createdAt, handleEdit, pizza }) => {
   console.log();
 
   const handleDeleteClick = async () => {
-    const response = await fetch(`/api/pizzas/${_id}`, {
-      method: 'DELETE',
-    });
+    const response = await fetch(
+      `https://pizza-police.herokuapp.com/api/pizzas/${_id}`,
+      {
+        method: 'DELETE',
+      }
+    );
     const json = await response.json();
 
     if (response.ok) {

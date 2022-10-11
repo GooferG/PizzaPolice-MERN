@@ -7,9 +7,12 @@ const ToppingDetails = ({ topping, handleEdit }) => {
   const { dispatch } = useToppingsContext();
 
   const handleDeleteClick = async () => {
-    const response = await fetch(`/api/toppings/${topping._id}`, {
-      method: 'DELETE',
-    });
+    const response = await fetch(
+      `https://pizza-police.herokuapp.com/api/toppings/${topping._id}`,
+      {
+        method: 'DELETE',
+      }
+    );
     const json = await response.json();
 
     if (response.ok) {

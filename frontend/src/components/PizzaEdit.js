@@ -19,13 +19,16 @@ const PizzaEdit = ({ handleBackButton, pizza }) => {
       ingredients: ingredients,
     };
 
-    const response = await fetch(`/api/pizzas/${pizza._id}`, {
-      method: 'PUT',
-      body: JSON.stringify(pizzaObj),
-      headers: {
-        'Content-type': 'application/json',
-      },
-    });
+    const response = await fetch(
+      `https://pizza-police.herokuapp.com/api/pizzas/${pizza._id}`,
+      {
+        method: 'PUT',
+        body: JSON.stringify(pizzaObj),
+        headers: {
+          'Content-type': 'application/json',
+        },
+      }
+    );
     const json = await response.json();
 
     if (!response.ok) {

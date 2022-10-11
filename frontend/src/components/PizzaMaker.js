@@ -29,13 +29,16 @@ const PizzaMaker = ({ toppings }) => {
     };
 
     console.log(pizza);
-    const response = await fetch('/api/pizzas', {
-      method: 'POST',
-      body: JSON.stringify(pizza),
-      headers: {
-        'Content-type': 'application/json',
-      },
-    });
+    const response = await fetch(
+      'https://pizza-police.herokuapp.com/api/pizzas',
+      {
+        method: 'POST',
+        body: JSON.stringify(pizza),
+        headers: {
+          'Content-type': 'application/json',
+        },
+      }
+    );
     const json = await response.json();
 
     if (!response.ok) {

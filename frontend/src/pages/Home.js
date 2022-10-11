@@ -23,7 +23,9 @@ const Home = ({ isAdmin }) => {
 
   useEffect(() => {
     const fetchToppings = async () => {
-      const response = await fetch('/api/toppings');
+      const response = await fetch(
+        'https://pizza-police.herokuapp.com/api/toppings'
+      );
       const json = await response.json();
 
       if (response.ok) {
