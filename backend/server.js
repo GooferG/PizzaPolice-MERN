@@ -1,6 +1,8 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
+
 // const methodOverride = require('method-override');
 
 const toppingRoutes = require('./routes/toppings');
@@ -11,6 +13,7 @@ const app = express();
 
 // middleware
 app.use(express.json());
+app.use(cors());
 
 // Method override
 // app.use(
