@@ -4,7 +4,6 @@ import PizzaDetails from './PizzaDetails';
 
 function PizzaDisplay({ handleShowEdit }) {
   const { pizzas, dispatch } = usePizzasContext();
-  console.log(handleShowEdit);
 
   useEffect(() => {
     const fetchPizzas = async () => {
@@ -21,7 +20,7 @@ function PizzaDisplay({ handleShowEdit }) {
       }
     };
     fetchPizzas();
-  }, []);
+  });
 
   return (
     <div>
