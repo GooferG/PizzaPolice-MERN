@@ -69,3 +69,16 @@ PATCH /pizzas/:id --> Updates a single workout (working on this) ✅
 ![Github](https://img.shields.io/badge/-GitHub-333?style=flat&logo=github)
 ![VSCode](https://img.shields.io/badge/-VS_Code-333?style=flat&logo=visualstudio)
 
+Screenshots:
+
+Main Page for Owner/Admin:
+![image](https://user-images.githubusercontent.com/25205819/195224995-05bfaa3e-6ca4-4047-9aa4-d00dad17a054.png)
+
+Main Page for Chef:
+![image](https://user-images.githubusercontent.com/25205819/195225076-e451a185-ad24-4b30-b092-8455d768998a.png)
+
+Editing Toppings:
+![image](https://user-images.githubusercontent.com/25205819/195225110-7cdb1497-5967-4ff5-bd87-3181296204fd.png)
+
+Editing Pizza:
+![image](https://user-images.githubusercontent.com/25205819/195225137-1e6f29c8-0877-4485-90a4-f1c5d83217b7.png)
