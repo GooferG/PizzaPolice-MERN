@@ -37,7 +37,7 @@ const Home = ({ isAdmin }) => {
     };
 
     fetchToppings();
-  });
+  }, []);
 
   return (
     <div className="home">

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import PizzaDisplay from './PizzaDisplay';
 import { usePizzasContext } from '../hooks/usePizzasContext';
+import PizzaEdit from './PizzaEdit';
 
 const PizzaMaker = ({ toppings }) => {
   const { pizzas, dispatch } = usePizzasContext();
@@ -11,12 +12,21 @@ const PizzaMaker = ({ toppings }) => {
   const [ingredients, setIngredients] = useState([]);
   const [error, setError] = useState(null);
   const [emptyFields, setEmptyFields] = useState([]);
+  const [pizzaId, setPizzaId] = useState('');
 
-  const handleShowEdit = (isEdit, pizzaName) => {
+  const pizzaObj = {
+    name: pizzaName,
+    size,
+    ingredients,
+    _id: pizzaId,
+  };
+
+  const handleShowEdit = (isEdit, pizza) => {
     setShowEdit(isEdit);
-    setPizzaName(pizzaName.name);
-    setSize(pizzaName.size);
-    setIngredients(pizzaName.ingredients);
+    setPizzaName(pizza.name);
+    setSize(pizza.size);
+    setIngredients(pizza.ingredients);
+    setPizzaId(pizza._id);
   };
 
   const handleSubmit = async (e) => {
@@ -63,52 +73,133 @@ const PizzaMaker = ({ toppings }) => {
 
   return (
     <div className="container">
-      <h1>Make your Master Pizza here! 👩‍🍳</h1>
-      <h2>🍅Ingredients Available: </h2>
-      <div className="ingredients">
-        {toppings.map((v, i) => (
-          <div key={i}>
-            <span>{v.title}</span>
-            <span>Available: {v.quantity}</span>
-            <span className="btn" onClick={(e) => handleAddIngr(v.title)}>
-              +
-            </span>
-            <span className="btn" onClick={(e) => setIngredients('')}>
-              -
-            </span>
-          </div>
-        ))}
-      </div>
-      <form className="create" onSubmit={handleSubmit}>
-        <label>Pizza Name: </label>
-        <input
-          type="text"
-          onChange={(e) => setPizzaName(e.target.value)}
-          value={pizzaName}
-          className={emptyFields.includes('pizzaName') ? 'error' : ''}
-        />
-        <label>Size (in inches): </label>
-        <input
-          type="number"
-          onChange={(e) => setSize(e.target.value)}
-          value={size}
-          className={emptyFields.includes('size') ? 'error' : ''}
-        />
-        <label>Ingredients:</label>
-        <input
-          type="text"
-          onChange={(e) => setIngredients(e.target.value)}
-          value={ingredients}
-          className={emptyFields.includes('ingredients') ? 'error' : ''}
-        />
-        <button>Add Pizza</button>
-        {error && <div className="error">{error}</div>}
-      </form>
-      <div>
-        <PizzaDisplay toppings={toppings} handleEdit={handleShowEdit} />
-      </div>
+      <>
+        {showEdit ? (
+          <PizzaEdit pizza={pizzaObj} handleBackButton={setShowEdit} />
+        ) : (
+          <>
+            <h1>Make your Master Pizza here! 👩‍🍳</h1>
+            <h2>🍅Ingredients Available: </h2>
+            <div className="ingredients">
+              {toppings.map((v, i) => (
+                <div key={i}>
+                  <span>{v.title}</span>
+                  <span>
+                    Available:{' '}
+                    {v.quantity > 2 && v.quantity < 5
+                      ? 'More than 2'
+                      : v.quantity > 5
+                      ? 'We have a lot!'
+                      : v.quantity < 1
+                      ? 'Sold out!'
+                      : v.quantity}
+                  </span>
+                  <span className="btn" onClick={(e) => handleAddIngr(v.title)}>
+                    +
+                  </span>
+                  <span className="btn" onClick={(e) => setIngredients('')}>
+                    -
+                  </span>
+                </div>
+              ))}
+            </div>
+            <form className="create" onSubmit={handleSubmit}>
+              <label>Pizza Name: </label>
+              <input
+                type="text"
+                onChange={(e) => setPizzaName(e.target.value)}
+                value={pizzaName}
+                className={emptyFields.includes('pizzaName') ? 'error' : ''}
+              />
+              <label>Size (in inches): </label>
+              <input
+                type="number"
+                onChange={(e) => setSize(e.target.value)}
+                value={size}
+                className={emptyFields.includes('size') ? 'error' : ''}
+              />
+              <label>Ingredients:</label>
+              <input
+                type="text"
+                onChange={(e) => setIngredients(e.target.value)}
+                value={ingredients}
+                className={emptyFields.includes('ingredients') ? 'error' : ''}
+              />
+              <button>Add Pizza</button>
+              {error && <div className="error">{error}</div>}
+            </form>
+            <div>
+              <PizzaDisplay
+                toppings={toppings}
+                handleShowEdit={handleShowEdit}
+              />
+            </div>
+          </>
+        )}
+      </>
     </div>
   );
+
+  // return (
+  //   <div className="container">
+  //     <>
+
+  //       <h1>Make your Master Pizza here! 👩‍🍳</h1>
+  //       <h2>🍅Ingredients Available: </h2>
+  //       <div className="ingredients">
+  //         {toppings.map((v, i) => (
+  //           <div key={i}>
+  //             <span>{v.title}</span>
+  //             <span>
+  //               Available:{' '}
+  //               {v.quantity > 2 && v.quantity < 5
+  //                 ? 'More than 2'
+  //                 : v.quantity > 5
+  //                 ? 'We have a lot!'
+  //                 : v.quantity < 1
+  //                 ? 'Sold out!'
+  //                 : v.quantity}
+  //             </span>
+  //             <span className="btn" onClick={(e) => handleAddIngr(v.title)}>
+  //               +
+  //             </span>
+  //             <span className="btn" onClick={(e) => setIngredients('')}>
+  //               -
+  //             </span>
+  //           </div>
+  //         ))}
+  //       </div>
+  //       <form className="create" onSubmit={handleSubmit}>
+  //         <label>Pizza Name: </label>
+  //         <input
+  //           type="text"
+  //           onChange={(e) => setPizzaName(e.target.value)}
+  //           value={pizzaName}
+  //           className={emptyFields.includes('pizzaName') ? 'error' : ''}
+  //         />
+  //         <label>Size (in inches): </label>
+  //         <input
+  //           type="number"
+  //           onChange={(e) => setSize(e.target.value)}
+  //           value={size}
+  //           className={emptyFields.includes('size') ? 'error' : ''}
+  //         />
+  //         <label>Ingredients:</label>
+  //         <input
+  //           type="text"
+  //           onChange={(e) => setIngredients(e.target.value)}
+  //           value={ingredients}
+  //           className={emptyFields.includes('ingredients') ? 'error' : ''}
+  //         />
+  //         <button>Add Pizza</button>
+  //         {error && <div className="error">{error}</div>}
+  //       </form>
+  //       <div>
+  //         <PizzaDisplay toppings={toppings} handleShowEdit={handleShowEdit} />
+  //       </div>
+  //     </>
+  //   </div>
+  // );
 };
 
 export default PizzaMaker;

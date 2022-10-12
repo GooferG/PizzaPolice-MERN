@@ -3,7 +3,7 @@ import { usePizzasContext } from '../hooks/usePizzasContext';
 
 const PizzaEdit = ({ handleBackButton, pizza }) => {
   const { dispatch } = usePizzasContext();
-  const [pizzaName, setPizzaName] = useState(pizza.title);
+  const [pizzaName, setPizzaName] = useState(pizza.name);
   const [size, setSize] = useState(pizza.size);
   const [ingredients, setIngredients] = useState(pizza.ingredients);
   const [error, setError] = useState(null);
@@ -11,7 +11,6 @@ const PizzaEdit = ({ handleBackButton, pizza }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(e.target.id);
 
     const pizzaObj = {
       name: pizzaName,
@@ -66,7 +65,7 @@ const PizzaEdit = ({ handleBackButton, pizza }) => {
             type="text"
             onChange={(e) => setPizzaName(e.target.value)}
             value={pizzaName}
-            className={emptyFields.includes('pizzaName') ? 'error' : ''}
+            // className={emptyFields.includes('pizzaName') ? 'error' : ''}
           />
 
           <label>Size (in inches):</label>
@@ -74,14 +73,14 @@ const PizzaEdit = ({ handleBackButton, pizza }) => {
             type="number"
             onChange={(e) => setSize(e.target.value)}
             value={size}
-            className={emptyFields.includes('size') ? 'error' : ''}
+            // className={emptyFields.includes('size') ? 'error' : ''}
           />
           <label>Ingredients</label>
           <input
             type="text"
             onChange={(e) => setIngredients(e.target.value)}
             value={ingredients}
-            className={emptyFields.includes('ingredients') ? 'error' : ''}
+            // className={emptyFields.includes('ingredients') ? 'error' : ''}
           />
           <button>Edit Pizza</button>
           {error && <div className="error">{error}</div>}

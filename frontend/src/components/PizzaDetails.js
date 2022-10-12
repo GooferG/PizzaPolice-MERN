@@ -1,3 +1,4 @@
+// import { useState } from 'react';
 import { usePizzasContext } from '../hooks/usePizzasContext';
 
 // date-fns
@@ -5,7 +6,23 @@ import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 
 const PizzaDetails = ({ name, _id, createdAt, handleEdit, pizza }) => {
   const { dispatch } = usePizzasContext();
-  console.log();
+  console.log(
+    'name:',
+    name,
+    '_id',
+    _id,
+    'createdAt:',
+    createdAt,
+    'handleEditFn:',
+    handleEdit,
+    'Pizza:',
+    pizza
+  );
+
+  console.log(pizza);
+
+  // const [pizzaName, setPizzaName] = useState(name);
+  // const [currentPizza, setCurrentPizza] = useState(pizza);
 
   const handleDeleteClick = async () => {
     const response = await fetch(
