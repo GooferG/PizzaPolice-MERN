@@ -20,7 +20,7 @@ function PizzaDisplay({ handleShowEdit }) {
       }
     };
     fetchPizzas();
-  });
+  }, []);
 
   return (
     <div>
