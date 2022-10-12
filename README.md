@@ -33,11 +33,11 @@ GET /pizzas --> Gets all the pizza documents ✅
 
 POST /pizzas --> Creates a new pizza document ✅
 
-GET /pizzas/:id --> Gets a single workout document (working on this) ⬛
+GET /pizzas/:id --> Gets a single workout document (working on this) ✅
 
 DELETE /pizzas/:id --> Deletes a single pizza ✅
 
-PATCH /pizzas/:id --> Updates a single workout (working on this) ⬛
+PATCH /pizzas/:id --> Updates a single workout (working on this) ✅
 # PizzaPolice-MERN
 
 ### Screenshoots:
