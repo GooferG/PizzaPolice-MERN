@@ -15,29 +15,29 @@ PORT=
 
 - API Endpoints (for Owner)
 
-GET /toppings --> Gets all the toppings documents
+GET /toppings --> Gets all the toppings documents ✅
 
-POST /toppings --> Creats a new toppings document
+POST /toppings --> Creats a new toppings document ✅
 
-GET /toppings/:id --> Gets a single toppings document
+GET /toppings/:id --> Gets a single toppings document ✅
 
-DELETE /toppings/:id --> Deletes a single topping
+DELETE /toppings/:id --> Deletes a single topping ✅
 
-PATCH /toppings/:id --> Updates a single toppping
+PATCH /toppings/:id --> Updates a single toppping ✅
 
 ---
 
 - API Endpoints (for Chef)
 
-GET /pizzas --> Gets all the pizza documents
+GET /pizzas --> Gets all the pizza documents ✅
 
-POST /pizzas --> Creates a new pizza document
+POST /pizzas --> Creates a new pizza document ✅
 
-GET /pizzas/:id --> Gets a single workout document
+GET /pizzas/:id --> Gets a single workout document (working on this) ⬛
 
-DELETE /pizzas/:id --> Deletes a single pizza
+DELETE /pizzas/:id --> Deletes a single pizza ✅
 
-PATCH /pizzas/:id --> Updates a single workout
+PATCH /pizzas/:id --> Updates a single workout (working on this) ⬛
 # PizzaPolice-MERN
 
 ### Screenshoots:
