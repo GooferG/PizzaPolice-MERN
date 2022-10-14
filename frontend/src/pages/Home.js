@@ -7,6 +7,7 @@ import ToppingDetails from '../components/ToppingDetails';
 import ToppingForm from '../components/ToppingForm';
 import ToppingEdit from '../components/ToppingEdit';
 import PizzaMaker from '../components/PizzaMaker';
+import LoadingDataSpinner from '../components/LoadingDataSpinner';
 
 const Home = ({ isAdmin }) => {
   const { toppings, dispatch } = useToppingsContext();
@@ -14,6 +15,7 @@ const Home = ({ isAdmin }) => {
   const [showEdit, setShowEdit] = useState(false);
   const [title, setTitle] = useState('');
   const [quantity, setQuantity] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleShowEdit = (isEdit, topping, qty) => {
     setShowEdit(isEdit);
@@ -23,21 +25,28 @@ const Home = ({ isAdmin }) => {
 
   useEffect(() => {
     const fetchToppings = async () => {
-      const response = await fetch(
-        'https://pizza-police.herokuapp.com/api/toppings'
-      );
-      const json = await response.json();
+      try {
+        const response = await fetch(
+          'https://pizza-police.herokuapp.com/api/toppings'
+        );
+        const json = await response.json();
 
-      if (response.ok) {
         dispatch({
           type: 'SET_TOPPINGS',
           payload: json,
         });
-      }
-    };
 
-    fetchToppings();
-  }, []);
+        setIsLoading(false);
+      } catch (error) {}
+    };
+    if (isLoading) {
+      fetchToppings();
+    }
+  }, [isLoading]);
+
+  if (isLoading) {
+    return <LoadingDataSpinner />;
+  }
 
   return (
     <div className="home">
