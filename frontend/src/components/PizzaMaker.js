@@ -87,9 +87,9 @@ const PizzaMaker = ({ toppings }) => {
                   <span>
                     Available:{' '}
                     {v.quantity > 2 && v.quantity < 5
-                      ? 'More than 2'
+                      ? 'Running out!'
                       : v.quantity > 5
-                      ? 'We have a lot!'
+                      ? 'In Stock!'
                       : v.quantity < 1
                       ? 'Sold out!'
                       : v.quantity}
