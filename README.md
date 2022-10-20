@@ -49,11 +49,13 @@ PATCH /pizzas/:id --> Updates a single workout (working on this) ✅
 
 ### Features to be added:
 
-- Display/Edit Pizzas
+- [X] Display/Edit Pizzas
 
-- Authentication
+- [] Authentication
 
-- Sort Items
+- [] Sort Items 
+
+- [] Adding logic to update DB when ingredients are used. 
 
 
 ## Technologies Used
